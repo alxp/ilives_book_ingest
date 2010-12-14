@@ -12,8 +12,8 @@ bookpid = pid.split('-')[0]
 
 #pageType = pid.split('-')[1][0] # f front matter p page z back matter
 pageType = re.findall(r'\-.\_', pid)[0][1]
-pageNumber = re.findall(r'\_....\-', pid)[0][1:5]
 
+pageNumber = re.findall(r'\-.\_....', pid)[0][3:7]
 part = dom1.createElement('part')
 detail = dom1.createElement('detail')
 part.appendChild(detail)

@@ -20,7 +20,7 @@ bookpid = pid.split('-')[0]
 
 pageType = re.findall(r'\-.\_', pid)[0][1] # f front matter p page z back matter
 
-pageNumber = re.findall(r'\_....\-', pid)[0][1:5]
+pageNumber = re.findall(r'\-.\_....', pid)[0][3:7]
 
 pageTypes = {'f':'Front Matter',
              'p':'Page',
