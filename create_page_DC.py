@@ -32,7 +32,7 @@ replace_node( dcdom, 'dc:type', 'text' )
 
 dc_title = dcdom.getElementsByTagName('dc:title')
 old_title = dc_title[0].childNodes[0]
-new_title = pageTypes[pageType] + ' ' + str(int(pageNumber[0:3])) + ' - ' + old_title.toxml()
+new_title = pageTypes[pageType] + ' ' + str(int(pageNumber[0:4])) + ' - ' + old_title.toxml()
 write_unicode_to_file(os.path.dirname(page_dc) + '/label.txt', new_title)
 
 extra_type_nodes = dcdom.getElementsByTagName('dc:type')

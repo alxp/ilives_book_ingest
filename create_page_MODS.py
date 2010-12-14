@@ -26,7 +26,7 @@ pageTypes = {'f':'Front Matter',
 caption = dom1.createElement('caption')
 detail.appendChild(caption)
 
-captionText = dom1.createTextNode(pageTypes[pageType] + ' ' + str(int(pageNumber[0:3])))
+captionText = dom1.createTextNode(pageTypes[pageType] + ' ' + str(int(pageNumber[0:4])))
 
 caption.appendChild(captionText)
 number = dom1.createElement('number')
