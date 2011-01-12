@@ -205,10 +205,7 @@ else
 	echo '  <fbm:addDatastream pid="'$book_pid'" dsID="TN" dsLabel="MEDIUM" dsMIME="image/jpg" dsLocation="'$DS_LOCATION$bibnum'/cover/cover.jpg" dsControlGroupType="M" dsState="A" logMessage="BatchModify - addDatastream TN"/>' >>ingest_book.xml
 	echo '  <fbm:addDatastream pid="'$book_pid'" dsID="OCR" dsLabel="OCR_Text.txt" dsMIME="text/plain" dsLocation="'$DS_LOCATION$bibnum/txt/$bibnum'.txt" dsControlGroupType="M" dsState="A" logMessage="BatchModify - addDatastream TXT"/>' >>ingest_book.xml
 	echo '  <fbm:addDatastream pid="'$book_pid'" dsID="ABBYY" dsLabel="ABBYY_XML.xml" dsMIME="text/xml" dsLocation="'$DS_LOCATION$bibnum/xml/$bibnum'.xml" dsControlGroupType="M" dsState="A" logMessage="BatchModify - addDatastream XML"/>' >>ingest_book.xml
-	echo '  <fbm:addDatastream pid="'$book_pid'" dsID="TEI" dsLabel="Annotated_TEI.xml" dsMIME="text/xml" dsControlGroupType="X" dsState="A" logMessage="BatchModify - addDatastream TEI">' >>ingest_book.xml
- 	echo '     <fbm:xmlData>' >> ingest_book.xml
-	sed 's/<?xml version="1.0" encoding="UTF-8"?>//g' "xml/"$bibnum".TEI.annotated.xml" >> ingest_book.xml
- 	echo '     </fbm:xmlData>' >> ingest_book.xml
+	echo '  <fbm:addDatastream pid="'$book_pid'" dsID="TEI" dsLabel="Annotated_TEI.xml" dsMIME="text/xml" dsLocation="'$DS_LOCATION$bibnum/xml/$bibnum'.TEI.annotated.xml" dsControlGroupType="M" dsState="A" logMessage="BatchModify - addDatastream TEI">' >>ingest_book.xml
 	echo '  </fbm:addDatastream>' >> ingest_book.xml
 	echo '  <fbm:addDatastream pid="'$book_pid'" dsID="KML" dsLabel="KML_Location_Data.kml" dsMIME="text/xml" dsLocation="'$DS_LOCATION$bibnum/xml/$bibnum'.kml" dsControlGroupType="M" dsState="A" logMessage="BatchModify - addDatastream KML"/>' >>ingest_book.xml
 	echo '</fbm:batchModify>' >>ingest_book.xml
@@ -265,7 +262,7 @@ for i in `tree -id |grep "\-.\_...."`; do
 	# Create the batch modify script	
   echo '<?xml version="1.0" encoding="utf-8"?>' >ingest_page_$i.xml
   echo '<fbm:batchModify xmlns:fbm="http://www.fedora.info/definitions/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.fedora.info/definitions/ http://www.fedora.info/definitions/1/0/api/batchModify.xsd">' >>ingest_page_$i.xml
-  echo '<fbm:addObject pid="'$page_pid'" label="'`< $i/label.txt`'" contentModel="ilives:pageCModel" logMessage="BatchModify - Add page object"/>' >>ingest_page_$i.xml
+  echo '<fbm:addObject pid="'$page_pid'" label="'`head -c 255 $i/label.txt`'" contentModel="ilives:pageCModel" logMessage="BatchModify - Add page object"/>' >>ingest_page_$i.xml
 # 	
   pagetei=`ls $i/*-*[0-9][0-9][0-9][0-9].xml`
   echo '  <fbm:addDatastream pid="'$page_pid'" dsID="TEI" dsLabel="TEI Page Fragment" dsMIME="text/xml" dsControlGroupType="X" dsState="A" logMessage="BatchModify - addDatastream Page TEI">' >>ingest_page_$i.xml
