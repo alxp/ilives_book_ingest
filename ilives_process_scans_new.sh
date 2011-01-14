@@ -289,10 +289,10 @@ for i in `tree -id |grep "\-.\_...."`; do
   echo '  </fbm:modifyDatastream>' >> ingest_page_$i.xml
   echo '</fbm:batchModify>' >> ingest_page_$i.xml
 
-
+echo About to add ${page_pid}
 #echo $FEDORA_HOME/client/bin/fedora-modify.sh $FEDORA_HOST fedoraAdmin $password ingest_page_$i.xml $ILIVESROOT/logs/book_ingest_$bibnum.log http 
  # if $FEDORA_HOME/client/bin/fedora-modify.sh $FEDORA_HOST fedoraAdmin $password ingest_page_$i.xml $ILIVESROOT/logs/book_ingest_$bibnum.log http validate-only=false | grep [1-9].*failed ; then
-  $FEDORA_HOME/client/bin/fedora-modify.sh $FEDORA_HOST fedoraAdmin $password ingest_page_$i.xml $ILIVESROOT/logs/book_ingest_$bibnum.log http validate-only=false
+  $FEDORA_HOME/client/bin/fedora-modify.sh $FEDORA_HOST fedoraAdmin $password ingest_page_$i.xml $ILIVESROOT/logs/book_ingest_$bibnum_${page_pid}.log http validate-only=false
 #		fatal_error $queueid "Batch modify of book record failed. See $ILIVESROOT/logs/book_ingest_$bibnum.log"	
 #		exit 1
 #    echo sad sad face
