@@ -18,6 +18,8 @@ Running the script
 
 First set up ilives_environment.sh so that the STORAGEROOT directory points to where your scans will sit waiting to be ingested.
 
+Copy the content of ilives_environment.sh.example to ilives_environment.sh. We tend to create different files for different repositories, and just rename the one we want to ilives_environment.sh for the ingest task.
+
 The script expects to connect to an Evergreen catalogue. Again, you wil lneed ot modify this to get it to grab bib data from elsewhere.
 
 The script is invoked by running
