@@ -1,0 +1,28 @@
+Island Lives book ingest workflow
+
+http://islandlives.ca/
+
+Part of the Islandora project
+
+http://islandora.ca/
+
+This set of scripts was created to trannsform scanned books, in the form of directories of TIFF images, into complete sets of book and page objects in a Fedora Commons repository.
+
+Most of the enviornment settings can be altered by modifying the variables in ilives_environment.sh.
+
+If you don't have access to an ABBYY Finereader installation you will need ot replace the OCR section with your own solution.
+
+The GATE+ANNIE workflow is based on a custom set of configurations specific to our Island Lives collection.  This will need to be modified or replaced to suit your needs.
+
+Running the script
+
+First set up ilives_environment.sh so that the STORAGEROOT directory points to where your scans will sit waiting to be ingested.
+
+The script expects to connect to an Evergreen catalogue. Again, you wil lneed ot modify this to get it to grab bib data from elsewhere.
+
+The script is invoked by running
+ilives_process_scans.sh <bibnum> <pid>
+
+Where bibnum is the directory underneath $STORAGEROOT where the TIFFs will be found. Right now tey also need to be under a directory called 'processed' below the bibnum directory.
+
+
